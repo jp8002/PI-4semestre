@@ -55,13 +55,13 @@ class viewAssinarPlano(LoginRequiredMixin, View):
                 {
                     "externalId": "1",
                     "name": "Assinatura Aventureiro",
-                    "description": "Acesso a 50 fichas.",
+                    "description": "Acesso a 20 fichas.",
                     "quantity": 1,
                     "price": 1399
                 }
             ],
-            "returnUrl": "http://localhost:8000/paginaInicial/",
-            "completionUrl": "http://localhost:8000/sucessoPagamento/",
+            "returnUrl": "https://pi-4semestre.onrender.com/paginaInicial/",
+            "completionUrl": "https://pi-4semestre.onrender.com/sucessoPagamento/",
         }
         
         try:
