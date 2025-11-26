@@ -378,14 +378,36 @@
 
     // Função para atualizar a raca selecionada
     function updateSelectedClass(racaId) {
-        if (racaId == "1") {
-                // Cria o novo cookie com os idiomas
-                const idiomas = ["3", "4"];
-                const idiomasStr = JSON.stringify(idiomas);
-                document.cookie = `idiomas=${encodeURIComponent(idiomasStr)}; path=/; max-age=3600`;
+        // Guarda o estado ORIGINAL antes de qualquer modificação
+        const estadoOriginal = getCookie("idhabilidade_especiais");
 
-                appendToCookie('idhabilidade_especiais', ["1","3"], 1); // 1 dia
-            }
+        if (racaId == "1") {
+            // Restaura ao estado original e ADICIONA habilidades da raça 1
+            setCookie('idhabilidade_especiais', estadoOriginal, 1);
+            appendToCookie('idhabilidade_especiais', ["1","3","11"], 1);
+            
+            const idiomas = ["3", "4"];
+            const idiomasStr = JSON.stringify(idiomas);
+            document.cookie = `idiomas=${encodeURIComponent(idiomasStr)}; path=/; max-age=3600`;
+            document.cookie = `check_percepcao=1; path=/; max-age=3600`;
+            
+        } else if (racaId == "2") {
+            // Restaura ao estado original e ADICIONA habilidades da raça 2
+            setCookie('idhabilidade_especiais', estadoOriginal, 1);
+            appendToCookie('idhabilidade_especiais', ["10","9","8"], 1);
+            
+            const idiomas = ["5", "4"];
+            const idiomasStr = JSON.stringify(idiomas);
+            document.cookie = `idiomas=${encodeURIComponent(idiomasStr)}; path=/; max-age=3600`;
+            document.cookie = `check_percepcao=0; path=/; max-age=3600`;
+        } else if (racaId == "3") {
+            // Restaura ao estado original e ADICIONA habilidades da raça 3
+            setCookie('idhabilidade_especiais', estadoOriginal, 1);
+            
+            const idiomas = ["4"];
+            const idiomasStr = JSON.stringify(idiomas);
+            document.cookie = `idiomas=${encodeURIComponent(idiomasStr)}; path=/; max-age=3600`;
+        }
 
         const racaData = racasData[racaId];
 

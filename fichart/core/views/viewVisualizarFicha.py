@@ -70,11 +70,30 @@ class viewVisualizarFicha(LoginRequiredMixin,View):
             )
             habilidade_especiais = habilidade_especiais | habilidades_bardo  # Concatena
 
+        if personagem.classe == "Bárbaro":
+            habilidades_barbaro = HabilidadeEspecial.objects.filter(
+                nome__in=["Fúria", "Defesa sem Armadura"]
+            )
+            habilidade_especiais = habilidade_especiais | habilidades_barbaro  # Concatena
+
+        if personagem.classe == "Patrulheiro":
+            habilidades_patrulheiro = HabilidadeEspecial.objects.filter(
+                nome__in=["Explorador Natural", "Inimigo Favorito"]
+            )
+            habilidade_especiais = habilidade_especiais | habilidades_patrulheiro  # Concatena
+
         if personagem.raca == "Elfo":
             habilidades_elfo = HabilidadeEspecial.objects.filter(
-                nome__in=["Ascensão Feérica", "Transe"]
+                id_habilidade_especial__in=["1", "3", "11"]
             )
             habilidade_especiais = habilidade_especiais | habilidades_elfo  # Concatena
+
+        if personagem.raca == "Anão":
+            habilidades_anao = HabilidadeEspecial.objects.filter(
+                id_habilidade_especial__in=["9", "8", "10"]
+            )
+            habilidade_especiais = habilidade_especiais | habilidades_anao  # Concatena
+
 
         #ProficienciasSalvaguardas_Pericias=========================================================================
         proficiencias_salvaguardas_pericias = personagem.proficienciaSalvaguardas_Pericias.all()
